@@ -3,19 +3,26 @@
 <?php 
 session_start();
 
-$admin = $_SESSION['user'] = 'admin';
-$password = $_SESSION['pass'] = '123';
+$username = $_POST['username'];
+$pass = $_POST['pass'];
 
-if(isset($_POST['submit'])) {
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
+$query = $conn->prepare("SELECT * FROM users WHERE usuario=:usuario");
+$query->execute(['usuario' => $username]);
+$user = $query->fetch();
 
-    if($user == $admin && $pass = $password) {
-        $_SESSION['login'] = true;
-        header('Location: appointment.php');
-    } else {
-        $_SESSION['login'] = false;
-        header('Location: login.php');
+if($query->rowCount() > 0) {
+    if($username === $user['usuario']) {
+            $_SESSION['login'] = '0';
+        if($pass === $user['contra']) {
+            $_SESSION['login'] = '1';
+            echo json_encode('Login');
+        } else {
+            echo json_encode('Ninguna Coincidencia Encontrada');
+            $_SESSION['login'] = '0';
+        }
     }
+} else {
+    echo json_encode('Ninguna Coincidencia Encontrada');
+    $_SESSION['login'] = '0';
 }
 ?>

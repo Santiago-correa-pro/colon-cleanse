@@ -14,7 +14,7 @@ include('../config/database.php')
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
-	<title>Fresh Bootstrap Table by Creative Tim</title>
+	<title>Admin | Citas</title>
 
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     
@@ -31,7 +31,9 @@ include('../config/database.php')
 <div class="wrapper">
     <div class="fresh-table full-color-azure full-screen-table">
         <div class="toolbar">
-            <button id="alertBtn" class="btn btn-default">Alert</button>
+            <form  action="logout.php" method="POST">
+                <button id="alertBtn" name="submit" type="submit" class="btn btn-default">Cerrar sessión</button>
+            </form>
         </div>
         
         <table id="fresh-table" class="table">
@@ -122,12 +124,7 @@ include('../config/database.php')
             
                 }
             };
-            
-            $alertBtn.click(function () {
-                alert("You pressed on Alert");
-            });
-        
-            
+                    
             $(window).resize(function () {
                 $table.bootstrapTable('resetView');
             });    
@@ -156,5 +153,5 @@ include('../config/database.php')
 
 <?php } 
     else {
-        header('Location: index.php');
+        header('Location: ../index.php');
 }?>
