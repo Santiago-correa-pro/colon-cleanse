@@ -81,6 +81,8 @@ $(document).ready(function(){
     });
 
       // Insert data into database
+      $('div.alert').hide();
+
       function load_data() {
         let nombre= $("#nombre").val();
         let celular = $("#celular").val();
@@ -93,12 +95,18 @@ $(document).ready(function(){
               method: "post", //POST
               data: {nombre,celular,fecha,mensaje},
               success: function(data) {
-                $('<div class="alert alert-success alert-msg mt-2">' + JSON.parse(data) + '</div>').insertBefore(".no-padding > h1");
-                $("#myForm").reset();
+               $('.alert-msg').show();
+               $('.alert-msg').html(JSON.parse(data));
               },
               error: function(data) {
                 alert('An error has occured');
               }
+            }).done(function() {
+                setTimeout(function() {
+                    $('.alert-msg').fadeTo(2000, 500).slideUp(500, function(){
+                      $('.alert-msg').slideUp(500);
+                  });
+                },3000);
             });
         }
       }
@@ -114,4 +122,9 @@ $(document).ready(function(){
       });
 
 
+      jQuery.datetimepicker.setLocale('es');
+
+      $(".tiempo").datetimepicker({
+        lazyInit: true,
+      })
 });

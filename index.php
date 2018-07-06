@@ -26,6 +26,7 @@
 			<link rel="stylesheet" href="css/nice-select.css">
 			<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/jquery.datetimepicker.min.css">
 			<link rel="stylesheet" href="css/main.css">
 		</head>
 		<body>
@@ -67,7 +68,7 @@
 								<button class="primary-btn2 mt-20 text-uppercase ">Empecemos<span class="lnr lnr-arrow-right"></span></button>
 							</div>
 							<div class="col-lg-6 d-flex align-self-end img-right">
-								<img src="img/doctor.svg" width="566px" height="690px" alt="ND">
+								<img src="img/doctor.svg" width="566px" height="690px" class="doctor" alt="ND">
 							</div>
 						</div>
 				</div>
@@ -162,6 +163,7 @@
 							<img class="img-fluid" src="img/about-img.jpg" alt="">
 						</div>
 						<div class="col-lg-6 col-md-12 about-right no-padding">
+							<div class="alert alert-success alert-msg mt-2"></div>
 							<h1>Pida una<br> Cita</h1>
 							<form class="booking-form" id="myForm" action="appointment.php" method="post">
 								 	<div class="row">
@@ -176,7 +178,7 @@
 										 oninput="setCustomValidity('')" 
 										 required>
 								 		</div>
-							 			<div class="col-lg-6 d-flex flex-column">
+							 			<div class="col-lg-12 d-flex flex-column">
 											<input 
 											name="celular" 
 											id="celular"
@@ -188,16 +190,18 @@
 										 	oninput="setCustomValidity('')" 
 											required>
 										</div>
-										<div class="col-lg-6 d-flex flex-column">
+										<div class="col-lg-12 d-flex flex-column">	
 											<input 
-											id="fecha" 
-											name="fecha" 
-											placeholder="Fecha"
-											oninvalid="this.setCustomValidity('En que dia deseas la cita')"
-										 	oninput="setCustomValidity('')" 
-											class="single-in mt-20"
-											type="date" 
-											required>
+												type="text" 
+												id="fecha" 
+												name="fecha" 
+												class="tiempo form-control mt-20" 
+												name="tiempo"
+												autocomplete="off"
+												placeholder="Cuando quieres la cita?"
+												oninvalid="this.setCustomValidity('A que horas deseas la cita')"
+										 		oninput="setCustomValidity('')" 
+												required>
 										</div>
 										<div class="col-lg-12 flex-column">
 											<textarea 
@@ -329,45 +333,8 @@
 			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 			<script src="js/jquery.magnific-popup.min.js"></script>
 			<script src="js/jquery.counterup.min.js"></script>
-			<script src="main.js"></script>
-<!-- 			<script>
-				$(function(){
-					// Insert data into database
-					function load_data() {
-						let nombre= $("#nombre").val();
-						let celular = $("#celular").val();
-						let fecha = $("#fecha").val();
-						let mensaje = $("#mensaje").val();
-
-						$.ajax({
-							url: "appointment.php", //appointment.php
-							method: "post", //POST
-							data: {nombre,celular,fecha,mensaje},
-							success: function(data) {
-								$('<div class="alert alert-success alert-msg mt-2">' + JSON.parse(data) + '</div>').insertBefore(".no-padding > h1");
-							},
-							error: function(data) {
-								alert('An error has occured');
-							}
-						});
-					}
-					
-					// Load insert database function
-				    $(".submit-btn").click(function() {
-						load_data();
-					});
-					
-					// Stop Reloading
-					$("#myForm").submit(function(event) {
-						return false;
-					});
-
-					$(".alert-msg").fadeTo(2000, 500).slideUp(500, function(){
-						$(".alert-msg").slideUp(500);
-					});
-
-				});
-
-			</script> -->
+			<script src="js/jquery.datetimepicker.full.min.js"></script>
+			<script src="js/jquery.datetimepicker.js"></script>
+			<script src="js/main.js"></script>
 		</body>
 	</html>

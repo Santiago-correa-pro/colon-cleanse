@@ -1899,6 +1899,10 @@ nav {
   transform-origin: 100% 50%;
 }
 
+input.tiempo {
+  height: 3rem;
+}
+
 @media (max-width: 767px) {
   nav {
     margin-right: 0;
@@ -2137,6 +2141,7 @@ nav a:hover {
   height: 850px !important;
 }
 
+
 @media (max-width: 768px) {
   .banner-area .fullscreen {
     height: 800px !important;
@@ -2365,6 +2370,10 @@ nav a:hover {
     left: 12px;
     width: 92%;
   }
+
+  .doctor {
+    height:400px;
+  }
 }
 
 .single-con .content:hover .content-overlay {
@@ -2416,6 +2425,11 @@ nav a:hover {
 @media (max-width: 768px) {
   .single-con {
     margin-bottom: 30px;
+  }
+
+  .doctor {
+    height:380px;
+    margin-top: 0.4rem;
   }
 }
 
@@ -2581,6 +2595,10 @@ p {
 @media (max-width: 991px) {
   .footer-social {
     text-align: left;
+  }
+
+  .doctor {
+    height:500px;
   }
 }
 
